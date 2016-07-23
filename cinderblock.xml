@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<cinder>
+  <block
+  	name="Flex"
+  	id="flex.mwalczyk.com"
+  	author="Mike Walczyk"
+  	git="git://github.com/mwalczyk/Cinder-Flex.git"
+  	summary=""
+  	libraryUrl="https://developer.nvidia.com/flex"
+  	version="0.0.1">
+  	<supports os="msw" />
+  	<sourcePattern>src/*.cpp</sourcePattern>
+    <headerPattern>include/*.h</headerPattern>
+  	<includePath>include</includePath>
+
+    <includePath absolute="true">$(CUDA_PATH)/include</includePath>
+    <libraryPath absolute="true">$(CUDA_PATH)/lib/Win32</libraryPath>
+
+  	<platform os="msw">
+  		<platform config="debug">
+  			<buildCopy>lib/msw/$(PlatformTarget)/flexDebug_$(PlatformTarget).dll</buildCopy>
+        <buildCopy>lib/msw/$(PlatformTarget)/cudart32_70.dll</buildCopy>
+  			<staticLibrary>lib/msw/$(PlatformTarget)/flexDebug_$(PlatformTarget).lib</staticLibrary>
+        <staticLibrary absolute="true">cuda.lib</staticLibrary>
+        <staticLibrary absolute="true">cudart.lib</staticLibrary>
+  		</platform>
+  		<platform config="release">
+  			<buildCopy>lib/msw/$(PlatformTarget)/flexRelease_$(PlatformTarget).dll</buildCopy>
+        <buildCopy>lib/msw/$(PlatformTarget)/cudart32_70.dll</buildCopy>
+  			<staticLibrary>lib/msw/$(PlatformTarget)/flexRelease_$(PlatformTarget).lib</staticLibrary>
+        <staticLibrary absolute="true">cuda.lib</staticLibrary>
+        <staticLibrary absolute="true">cudart.lib</staticLibrary>
+  		</platform>
+  	</platform>
+  </block>
+</cinder>
